@@ -20,3 +20,12 @@ def create_task(request):
             date_of_completion=request.POST.get("date_of_completion")
         )
         return HttpResponseRedirect("/")
+
+
+def delete_task(request):
+    try:
+        task = Task.objects.get(id=request.GET.get("id"))
+        task.delete()
+    except Task.DoesNotExist:
+        return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/")
