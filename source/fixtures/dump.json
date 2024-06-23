@@ -1,0 +1,65 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "description": "Купить продукты",
+    "status": "new",
+    "date_of_completion": null
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 4,
+  "fields": {
+    "description": "Убрать в доме",
+    "status": "in_progress",
+    "date_of_completion": null
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 6,
+  "fields": {
+    "description": "Забрала вещи из химчистки",
+    "status": "done",
+    "date_of_completion": "2024-06-23"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 11,
+  "fields": {
+    "description": "Сдать анализы",
+    "status": "new",
+    "date_of_completion": "2024-07-01"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 12,
+  "fields": {
+    "description": "Прочитать книгу \"Медвежий угол\"",
+    "status": "in_progress",
+    "date_of_completion": null
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 13,
+  "fields": {
+    "description": "Помыть окна",
+    "status": "new",
+    "date_of_completion": null
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 14,
+  "fields": {
+    "description": "Постирать шторы",
+    "status": "done",
+    "date_of_completion": "2024-06-16"
+  }
+}
+]
