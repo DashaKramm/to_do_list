@@ -5,7 +5,8 @@
   "fields": {
     "description": "Купить продукты",
     "status": "new",
-    "date_of_completion": null
+    "date_of_completion": null,
+    "detailed_description": "Купить крупы, овощи, фрукты, яйца и курицу"
   }
 },
 {
@@ -14,7 +15,8 @@
   "fields": {
     "description": "Убрать в доме",
     "status": "in_progress",
-    "date_of_completion": null
+    "date_of_completion": null,
+    "detailed_description": "Осталось помыть сантехнику. Пропылесосила, помыла полы, протёрла пыль."
   }
 },
 {
@@ -23,7 +25,8 @@
   "fields": {
     "description": "Забрала вещи из химчистки",
     "status": "done",
-    "date_of_completion": "2024-06-23"
+    "date_of_completion": "2024-06-23",
+    "detailed_description": "Забрала плед и пальто"
   }
 },
 {
@@ -32,7 +35,8 @@
   "fields": {
     "description": "Сдать анализы",
     "status": "new",
-    "date_of_completion": "2024-07-01"
+    "date_of_completion": "2024-07-01",
+    "detailed_description": "Гастроэнтеролог назначила сдать несколько анализов (см. назначения)"
   }
 },
 {
@@ -41,7 +45,8 @@
   "fields": {
     "description": "Прочитать книгу \"Медвежий угол\"",
     "status": "in_progress",
-    "date_of_completion": null
+    "date_of_completion": null,
+    "detailed_description": "Прочитать книгу Бакмана по рекомендации"
   }
 },
 {
@@ -50,7 +55,8 @@
   "fields": {
     "description": "Помыть окна",
     "status": "new",
-    "date_of_completion": null
+    "date_of_completion": null,
+    "detailed_description": "Помыть окна в зале и в спальне"
   }
 },
 {
@@ -59,7 +65,8 @@
   "fields": {
     "description": "Постирать шторы",
     "status": "done",
-    "date_of_completion": "2024-06-16"
+    "date_of_completion": "2024-06-16",
+    "detailed_description": "Постирала шторы на кухне"
   }
 }
 ]
