@@ -12,7 +12,9 @@
 <form action="/create/" method="post">
     {% csrf_token %}
     <label>Description</label><br/>
-    <textarea name="description"></textarea><br/>
+    <input type="text" name="description" maxlength="50"/><br/><br/>
+    <label>Detail description</label><br/>
+    <textarea name="detail_description"></textarea><br/>
     <label>Status</label><br/>
     <select name="status" id="status">
         {% for s in status_choices %}
