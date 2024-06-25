@@ -32,3 +32,8 @@ def create_task(request):
 def delete_task(request, *args, pk, **kwargs):
     get_object_or_404(Task, pk=pk).delete()
     return HttpResponseRedirect("/")
+
+
+def detailed_task_view(request, *args, pk, **kwargs):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, "detailed_task_view.html", context={"task": task})

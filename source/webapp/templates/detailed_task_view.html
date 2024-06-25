@@ -10,22 +10,20 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<br>
-<a href="create/">Добавить новую задачу</a>
-<br>
-{% for task in tasks %}
-    <div class="card mt-3" style="width: 21rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ task.description }}</h5>
-            <h6 class="card-subtitle mb-2 text-success">{{ task.status }}</h6>
-            {% if task.date_of_completion is not None %}
-                <p class="card-text">{{ task.date_of_completion }}</p>
-            {% endif %}
-            <a href="delete/{{ task.id }}/" class="card-link, link-danger">Удалить задачу</a>
-            <a href="task/{{ task.id }}/" class="card-link, link-info">Детальный просмотр</a>
-        </div>
+<div class="card mt-3" style="width: 18rem;">
+    <div class="card-body">
+        <h3 class="card-title">{{ task.description }}</h3>
+        {% if task.detailed_description is not None %}
+            <p class="card-title">{{ task.detailed_description }}</p>
+        {% endif %}
+        <p class="card-subtitle mb-2 text-success"><i>{{ task.status }}</i></p>
+        {% if task.date_of_completion is not None %}
+            <p class="card-text">{{ task.date_of_completion }}</p>
+        {% endif %}
+        <a href="delete/{{ task.id }}/" class="card-link, link-danger">Удалить задачу</a>
+        <a href="/" class="card-link">На главную</a>
     </div>
-{% endfor %}
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
