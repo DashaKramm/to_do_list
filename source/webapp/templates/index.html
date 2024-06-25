@@ -21,7 +21,7 @@
             {% if task.date_of_completion is not None %}
                 <p class="card-text">{{ task.date_of_completion }}</p>
             {% endif %}
-            <a href="delete?id={{ task.id }}" class="card-link">Удалить задачу</a>
+            <a href="delete/{{ task.id }}/" class="card-link">Удалить задачу</a>
         </div>
     </div>
 {% endfor %}

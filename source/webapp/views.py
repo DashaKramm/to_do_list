@@ -27,9 +27,9 @@ def create_task(request):
         return HttpResponseRedirect("/")
 
 
-def delete_task(request):
+def delete_task(request, *args, pk, **kwargs):
     try:
-        task = Task.objects.get(id=request.GET.get("id"))
+        task = Task.objects.get(id=pk)
         task.delete()
     except Task.DoesNotExist:
         return HttpResponseRedirect("/")
