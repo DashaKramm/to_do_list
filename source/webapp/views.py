@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from webapp.models import Task, status_choices
 
@@ -28,9 +28,5 @@ def create_task(request):
 
 
 def delete_task(request, *args, pk, **kwargs):
-    try:
-        task = Task.objects.get(id=pk)
-        task.delete()
-    except Task.DoesNotExist:
-        return HttpResponseRedirect("/")
+    get_object_or_404(Task, pk=pk).delete()
     return HttpResponseRedirect("/")
