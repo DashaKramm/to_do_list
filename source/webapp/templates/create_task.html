@@ -13,8 +13,8 @@
     {% csrf_token %}
     <label>Description</label><br/>
     <input type="text" name="description" maxlength="50"/><br/><br/>
-    <label>Detail description</label><br/>
-    <textarea name="detail_description"></textarea><br/>
+    <label>Detailed description</label><br/>
+    <textarea name="detailed_description"></textarea><br/>
     <label>Status</label><br/>
     <select name="status" id="status">
         {% for s in status_choices %}

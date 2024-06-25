@@ -17,12 +17,14 @@ def create_task(request):
         description = request.POST.get("description")
         status = request.POST.get("status")
         date_of_completion = request.POST.get("date_of_completion")
+        detailed_description = request.POST.get("detailed_description")
         if not date_of_completion:
             date_of_completion = None
         Task.objects.create(
             description=description,
             status=status,
-            date_of_completion=date_of_completion
+            date_of_completion=date_of_completion,
+            detailed_description=detailed_description,
         )
         return HttpResponseRedirect("/")
 
