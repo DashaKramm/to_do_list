@@ -17,7 +17,7 @@
             {% if task.detailed_description is not None %}
                 <p class="card-title" style="white-space: pre-wrap">{{ task.detailed_description }}</p>
             {% endif %}
-            <p class="card-subtitle mb-2 text-success"><i>{{ task.status }}</i></p>
+            <p class="card-subtitle mb-2 text-success"><i>{{ task.get_status_display }}</i></p>
             {% if task.date_of_completion is not None %}
                 <p class="card-text">{{ task.date_of_completion }}</p>
             {% endif %}

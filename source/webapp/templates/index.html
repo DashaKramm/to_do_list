@@ -10,7 +10,7 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title mb-2">{{ task.description }}</h5>
                         <div class="flex-grow-1">
-                            <h6 class="card-subtitle mb-2 text-success"><i>{{ task.status }}</i></h6>
+                            <h6 class="card-subtitle mb-2 text-success"><i>{{ task.get_status_display }}</i></h6>
                             {% if task.date_of_completion %}
                                 <p class="card-text">{{ task.date_of_completion }}</p>
                             {% endif %}
