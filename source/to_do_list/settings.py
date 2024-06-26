@@ -11,16 +11,22 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4b1%aqdu1t(%_01fe9lmtc5y)@)1zd(wc193fd!p%58-el=@em'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,11 +83,11 @@ WSGI_APPLICATION = 'to_do_list.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'to_do_list_project',
-        'USER': 'postgres',
-        'PASSWORD': 'ulver7',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': env.str('NAME'),
+        'USER': env.str('USER'),
+        'PASSWORD': env.str('PASSWORD'),
+        'HOST': env.str('HOST'),
+        'PORT': env.int('PORT'),
     }
 }
 
