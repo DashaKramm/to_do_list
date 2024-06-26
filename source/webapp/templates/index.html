@@ -3,19 +3,26 @@
     <title>Tasks</title>
 {% endblock %}
 {% block content %}
-    <a href="{% url 'create_task' %}">Добавить новую задачу</a>
-    <br>
-    {% for task in tasks %}
-        <div class="card mt-3" style="width: 21rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ task.description }}</h5>
-                <h6 class="card-subtitle mb-2 text-success">{{ task.status }}</h6>
-                {% if task.date_of_completion is not None %}
-                    <p class="card-text">{{ task.date_of_completion }}</p>
-                {% endif %}
-                <a href="{% url 'delete_task' task.pk %}" class="card-link, link-danger">Удалить задачу</a>
-                <a href="{% url 'detailed_task_view' task.pk %}" class="card-link, link-info">Детальный просмотр</a>
+    <div class="row mt-3">
+        {% for task in tasks %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title mb-2">{{ task.description }}</h5>
+                        <div class="flex-grow-1">
+                            <h6 class="card-subtitle mb-2 text-success"><i>{{ task.status }}</i></h6>
+                            {% if task.date_of_completion %}
+                                <p class="card-text">{{ task.date_of_completion }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{% url 'delete_task' task.pk %}" class="card-link text-danger">Удалить задачу</a>
+                            <a href="{% url 'detailed_task_view' task.pk %}" class="card-link text-info">Детальный
+                                просмотр</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}

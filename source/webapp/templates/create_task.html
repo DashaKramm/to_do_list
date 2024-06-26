@@ -2,6 +2,8 @@
 {% block title %}
     <title>Create task</title>
 {% endblock %}
+{% block links %}
+{% endblock %}
 {% block content %}
     <h2>Create Task</h2>
     <form action="" method="post">
@@ -23,6 +25,4 @@
         <br/>
         <input type="submit" value="Send"/>
     </form>
-    <br/>
-    <a href="{% url 'tasks' %}">На главную</a>
 {% endblock %}

@@ -2,6 +2,14 @@
 {% block title %}
     <title>Detailed task view</title>
 {% endblock %}
+{% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'create_task' %}">Создание задачи</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'delete_task' task.pk %}">Удалить задачу</a>
+    </li>
+{% endblock %}
 {% block content %}
     <div class="card mt-3" style="width: 18rem;">
         <div class="card-body">
@@ -13,8 +21,6 @@
             {% if task.date_of_completion is not None %}
                 <p class="card-text">{{ task.date_of_completion }}</p>
             {% endif %}
-            <a href="{% url 'delete_task' task.pk %}" class="card-link, link-danger">Удалить задачу</a>
-            <a href="{% url 'tasks' %}" class="card-link">На главную</a>
         </div>
     </div>
 {% endblock %}
