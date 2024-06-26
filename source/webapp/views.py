@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
 from webapp.models import Task, status_choices
 
@@ -20,18 +21,18 @@ def create_task(request):
         detailed_description = request.POST.get("detailed_description")
         if not date_of_completion:
             date_of_completion = None
-        Task.objects.create(
+        task = Task.objects.create(
             description=description,
             status=status,
             date_of_completion=date_of_completion,
             detailed_description=detailed_description,
         )
-        return HttpResponseRedirect("/")
+        return redirect('detailed_task_view', pk=task.pk)
 
 
 def delete_task(request, *args, pk, **kwargs):
     get_object_or_404(Task, pk=pk).delete()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse('tasks'))
 
 
 def detailed_task_view(request, *args, pk, **kwargs):

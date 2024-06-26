@@ -20,8 +20,8 @@
         {% if task.date_of_completion is not None %}
             <p class="card-text">{{ task.date_of_completion }}</p>
         {% endif %}
-        <a href="delete/{{ task.id }}/" class="card-link, link-danger">Удалить задачу</a>
-        <a href="/" class="card-link">На главную</a>
+        <a href="{% url 'delete_task' task.pk %}" class="card-link, link-danger">Удалить задачу</a>
+        <a href="{% url 'tasks' %}" class="card-link">На главную</a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
