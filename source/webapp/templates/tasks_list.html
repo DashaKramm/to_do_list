@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Tasks list</title>
+{% endblock %}
+{% block links %}
+{% endblock %}
+{% block content %}
+    <h2>Tasks List</h2>
+    <form action="" method="post">
+        {% include 'partial/task_form.html' with button_text='Delete' %}
+    </form>
+{% endblock %}

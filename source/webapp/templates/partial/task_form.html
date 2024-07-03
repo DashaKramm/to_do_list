@@ -1,6 +1,10 @@
 {% csrf_token %}
 {% for field in form %}
-    <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    {% if field.label != 'Tasks' %}
+        <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    {% else %}
+        <p></p>
+    {% endif %}
     {% for error in field.errors %}
         <p class="text-danger">{{ error }}</p>
     {% endfor %}

@@ -3,6 +3,9 @@
     <title>Create task</title>
 {% endblock %}
 {% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'tasks_list' %}">Список задач</a>
+    </li>
 {% endblock %}
 {% block content %}
     <h2>Create Task</h2>

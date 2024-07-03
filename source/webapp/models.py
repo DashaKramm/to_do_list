@@ -12,7 +12,7 @@ class Task(models.Model):
     detailed_description = models.TextField(null=True, blank=True, verbose_name="Подробное описание")
 
     def __str__(self):
-        return f"{self.pk}) {self.description} ({self.status})"
+        return f"{self.description} ({self.status})"
 
     class Meta:
         db_table = "tasks"
