@@ -1,0 +1,31 @@
+{% csrf_token %}
+<label>Description:</label><br/>
+<input type="text" value="{{ task.description }}" name="description" maxlength="50"/><br/><br/>
+{% if task.detailed_description %}
+    <label>Detailed description:</label><br/>
+    <textarea name="detailed_description">{{ task.detailed_description }}</textarea><br/>
+{% else %}
+    <label>Detailed description:</label><br/>
+    <textarea name="detailed_description"></textarea><br/>
+{% endif %}
+<label>Status:</label><br/>
+<select name="status" id="status">
+    {% for s in status_choices %}
+        {% if s.0 == task.status %}
+            <option value="{{ s.0 }}" selected>{{ s.1 }}</option>
+        {% else %}
+            <option value="{{ s.0 }}">{{ s.1 }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+<br/>
+<br/>
+{% if task.date_of_completion %}
+    <label>Date of completion:</label><br/>
+    <input type="date" value="{{ task.date_of_completion|date:'Y-m-d' }}" name="date_of_completion"/><br/>
+{% else %}
+    <label>Date of completion:</label><br/>
+    <input type="date" name="date_of_completion"/><br/>
+{% endif %}
+<br/>
+<input type="submit" value="{{ button_text }}"/>

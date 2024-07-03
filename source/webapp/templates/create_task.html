@@ -7,22 +7,6 @@
 {% block content %}
     <h2>Create Task</h2>
     <form action="" method="post">
-        {% csrf_token %}
-        <label>Description:</label><br/>
-        <input type="text" name="description" maxlength="50"/><br/><br/>
-        <label>Detailed description:</label><br/>
-        <textarea name="detailed_description"></textarea><br/>
-        <label>Status:</label><br/>
-        <select name="status" id="status">
-            {% for s in status_choices %}
-                <option value="{{ s.0 }}">{{ s.1 }}</option>
-            {% endfor %}
-        </select>
-        <br/>
-        <br/>
-        <label>Date of completion:</label><br/>
-        <input type="date" name="date_of_completion"/><br/>
-        <br/>
-        <input type="submit" value="Create"/>
+        {% include 'partial/task_form.html' with button_text='Create' %}
     </form>
 {% endblock %}
