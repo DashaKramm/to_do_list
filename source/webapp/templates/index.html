@@ -17,8 +17,14 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{% url 'delete_task' task.pk %}" class="card-link text-danger">Удалить задачу</a>
+                        </div>
+                        <div>
                             <a href="{% url 'detailed_task_view' task.pk %}" class="card-link text-info">Детальный
                                 просмотр</a>
+                        </div>
+                        <div>
+                            <a href="{% url 'update_task' task.pk %}" class="card-link text-warning">Редактировать
+                                задачу</a>
                         </div>
                     </div>
                 </div>

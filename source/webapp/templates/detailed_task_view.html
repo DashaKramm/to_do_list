@@ -9,6 +9,10 @@
     <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url 'delete_task' task.pk %}">Удалить задачу</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'update_task' task.pk %}">Редактировать
+            задачу</a>
+    </li>
 {% endblock %}
 {% block content %}
     <div class="card mt-3" style="width: 18rem;">

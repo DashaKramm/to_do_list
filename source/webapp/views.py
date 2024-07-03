@@ -38,3 +38,19 @@ def delete_task(request, *args, pk, **kwargs):
 def detailed_task_view(request, *args, pk, **kwargs):
     task = get_object_or_404(Task, pk=pk)
     return render(request, "detailed_task_view.html", context={"task": task})
+
+
+def update_task(request, *args, pk, **kwargs):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == "GET":
+        return render(request, "update_task.html", context={
+            'status_choices': status_choices,
+            'task': get_object_or_404(Task, pk=pk)
+        })
+    else:
+        task.description = request.POST.get("description")
+        task.status = request.POST.get("status")
+        task.date_of_completion = request.POST.get("date_of_completion") or None
+        task.detailed_description = request.POST.get("detailed_description")
+        task.save()
+        return redirect('detailed_task_view', pk=task.pk)
