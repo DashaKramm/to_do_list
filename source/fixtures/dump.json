@@ -1,72 +1,116 @@
 [
 {
-  "model": "webapp.task",
-  "pk": 3,
-  "fields": {
-    "description": "Купить продукты",
-    "status": "new",
-    "date_of_completion": null,
-    "detailed_description": "Купить крупы, овощи, фрукты, яйца и курицу"
-  }
+    "model": "webapp.task",
+    "pk": 1,
+    "fields": {
+        "summary": "Реализовать функционал регистрации пользователей",
+        "description": "Написать и интегрировать код для страницы регистрации пользователей с проверкой введенных данных.",
+        "status": 1,
+        "type": 1,
+        "created_at": "2024-07-11T06:29:11.930Z",
+        "updated_at": "2024-07-11T06:29:11.930Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 4,
-  "fields": {
-    "description": "Убрать в доме",
-    "status": "in_progress",
-    "date_of_completion": null,
-    "detailed_description": "Осталось помыть сантехнику. Пропылесосила, помыла полы, протёрла пыль."
-  }
+    "model": "webapp.task",
+    "pk": 2,
+    "fields": {
+        "summary": "Ошибка валидации формы входа",
+        "description": "При попытке входа с неверными учетными данными пользователь не получает сообщения об ошибке.",
+        "status": 2,
+        "type": 2,
+        "created_at": "2024-07-11T06:30:37.318Z",
+        "updated_at": "2024-07-11T06:30:37.318Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 6,
-  "fields": {
-    "description": "Забрала вещи из химчистки",
-    "status": "done",
-    "date_of_completion": "2024-06-23",
-    "detailed_description": "Забрала плед и пальто"
-  }
+    "model": "webapp.task",
+    "pk": 3,
+    "fields": {
+        "summary": "Добавить поддержку многоязычности на сайт",
+        "description": "Реализовать функционал, позволяющий пользователям выбирать язык интерфейса сайта из предложенных вариантов.",
+        "status": 1,
+        "type": 3,
+        "created_at": "2024-07-11T06:31:46.930Z",
+        "updated_at": "2024-07-11T06:31:46.930Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 11,
-  "fields": {
-    "description": "Сдать анализы",
-    "status": "new",
-    "date_of_completion": "2024-07-01",
-    "detailed_description": "Гастроэнтеролог назначила сдать несколько анализов (см. назначения)"
-  }
+    "model": "webapp.task",
+    "pk": 4,
+    "fields": {
+        "summary": "Оптимизировать загрузку изображений на главной странице",
+        "description": "Использовать сжатие изображений и асинхронную загрузку для ускорения загрузки главной страницы.",
+        "status": 2,
+        "type": 1,
+        "created_at": "2024-07-11T06:33:51.767Z",
+        "updated_at": "2024-07-11T06:33:51.767Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 12,
-  "fields": {
-    "description": "Прочитать книгу \"Медвежий угол\"",
-    "status": "in_progress",
-    "date_of_completion": null,
-    "detailed_description": "Прочитать книгу Бакмана по рекомендации"
-  }
+    "model": "webapp.task",
+    "pk": 5,
+    "fields": {
+        "summary": "Неправильное отображение текста в блоке комментариев",
+        "description": "Текст комментариев обрезается на мобильных устройствах из-за неправильной настройки стилей.",
+        "status": 1,
+        "type": 2,
+        "created_at": "2024-07-11T06:34:21.650Z",
+        "updated_at": "2024-07-11T06:34:21.650Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 13,
-  "fields": {
-    "description": "Помыть окна",
-    "status": "new",
-    "date_of_completion": null,
-    "detailed_description": "Помыть окна в зале и в спальне"
-  }
+    "model": "webapp.task",
+    "pk": 6,
+    "fields": {
+        "summary": "Добавить функцию автодополнения в поле поиска",
+        "description": "Реализовать автодополнение при вводе запроса в поле поиска для улучшения пользовательского опыта.",
+        "status": 3,
+        "type": 3,
+        "created_at": "2024-07-11T06:34:47.215Z",
+        "updated_at": "2024-07-11T06:36:30.461Z"
+    }
 },
 {
-  "model": "webapp.task",
-  "pk": 14,
-  "fields": {
-    "description": "Постирать шторы",
-    "status": "done",
-    "date_of_completion": "2024-06-16",
-    "detailed_description": "Постирала шторы на кухне"
-  }
+    "model": "webapp.status",
+    "pk": 1,
+    "fields": {
+        "name": "New"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 2,
+    "fields": {
+        "name": "In Progress"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 3,
+    "fields": {
+        "name": "Done"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 1,
+    "fields": {
+        "name": "Task"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 2,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 3,
+    "fields": {
+        "name": "Enhancement"
+    }
 }
 ]
