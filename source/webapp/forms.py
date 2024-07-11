@@ -9,8 +9,7 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = '__all__'
         widgets = {
-            'detailed_description': widgets.Textarea(attrs={"cols": 24, "rows": 5}),
-            'date_of_completion': widgets.DateInput(attrs={"type": "date"}),
+            'description': widgets.Textarea(attrs={"cols": 24, "rows": 5}),
         }
 
 
