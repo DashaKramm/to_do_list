@@ -11,9 +11,15 @@
                         <h5 class="card-title mb-2">{{ task.summary }}</h5>
                         <div class="flex-grow-1">
                             <h6 class="card-subtitle mb-2 text-success"><i><span
-                                    class="text-body-secondary">Статус: </span>{{ task.status }}</i></h6>
+                                    class="text-body-secondary">Статус: </span>
+                                {% for status in task.status.all %}
+                                    {{ status.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}</i></h6>
                             <h6 class="card-subtitle mb-2 text-info-emphasis"><i><span
-                                    class="text-body-secondary">Тип: </span>{{ task.type }}</i></h6>
+                                    class="text-body-secondary">Тип: </span>
+                                {% for type in task.type.all %}
+                                    {{ type.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}</i></h6>
                             <p class="card-text text-warning-emphasis"><span
                                     class="text-body-secondary">Создано: </span>{{ task.created_at }}</p>
                         </div>

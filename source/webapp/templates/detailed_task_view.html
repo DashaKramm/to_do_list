@@ -24,10 +24,15 @@
             {% if task.description %}
                 <p class="card-title" style="white-space: pre-wrap">{{ task.description }}</p>
             {% endif %}
-            <p class="card-subtitle mb-2 text-success"><i><span
-                    class="text-body-secondary">Статус: </span>{{ task.status }}</i></p>
-            <p class="card-subtitle mb-2 text-info-emphasis"><i><span
-                    class="text-body-secondary">Тип: </span>{{ task.type }}</i></p>
+            <p class="card-subtitle mb-2 text-success"><i><span class="text-body-secondary">Статус: </span>
+                {% for status in task.status.all %}
+                    {{ status.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </i></p>
+            <p class="card-subtitle mb-2 text-info-emphasis"><i><span class="text-body-secondary">Тип: </span>
+                {% for type in task.type.all %}
+                    {{ type.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}</i></p>
             <p class="card-text text-warning-emphasis"><span
                     class="text-body-secondary">Создано: </span>{{ task.created_at }}</p>
             <p class="card-text text-warning-emphasis"><span
