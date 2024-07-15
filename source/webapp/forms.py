@@ -20,12 +20,11 @@ class TaskForm(forms.ModelForm):
             raise ValidationError('Краткое описание должно содержать не менее 10 символов')
         return summary
 
-    def clean(self):
-        summary = self.cleaned_data.get('summary')
-        description = self.cleaned_data.get('description')
-        if summary and description and summary == description:
-            raise ValidationError('Краткое описание не должно совпадать с полным описанием')
-        return super().clean()
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if description and len(description) < 15:
+            raise ValidationError('Полное описание должно содержать не менее 15 символов')
+        return description
 
 
 class TaskDeleteForm(forms.Form):

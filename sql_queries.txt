@@ -1,0 +1,12 @@
+from django.utils import timezone
+from datetime import timedelta
+from django.db.models import Q, F, Count
+from webapp.models import Task, Status, Type
+
+
+Task.objects.filter(status__name='Done', updated_at__gte=(timezone.now() - timedelta(days=30)))
+Task.objects.filter(status__name__in=['New', 'In Progress'],type__name__in=['Enhancement', 'Bug'])
+Task.objects.filter(Q(summary__icontains='bug') | Q(type__name='Bug')).exclude(status__name='Done')
+Task.objects.all().values_list('id', 'summary', 'type__name', 'status__name')
+Task.objects.filter(summary=F('description'))
+Task.objects.values_list('type__name').annotate(task_count=Count('id'))
