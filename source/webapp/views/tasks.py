@@ -8,30 +8,6 @@ from webapp.models import Task
 
 
 # Create your views here.
-class TaskListView(TemplateView):
-    template_name = 'tasks/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['tasks'] = Task.objects.order_by('-id')
-        return context
-
-
-class CreateTaskView(TemplateView):
-    template_name = "tasks/create_task.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['form'] = TaskForm()
-        return context
-
-    def post(self, request, *args, **kwargs):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            task = form.save()
-            return redirect('detailed_task_view', pk=task.pk)
-        return render(request, self.template_name, context={'form': form})
-
 
 class DeleteTaskView(TemplateView):
     template_name = "tasks/delete_task.html"
@@ -47,7 +23,7 @@ class DeleteTaskView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         self.task.delete()
-        return HttpResponseRedirect(reverse('tasks'))
+        return HttpResponseRedirect(reverse('projects'))
 
 
 class TaskDetailView(TemplateView):
@@ -94,5 +70,5 @@ class TasksListDeleteView(TemplateView):
         if form.is_valid():
             delete_tasks = form.cleaned_data['tasks']
             delete_tasks.delete()
-            return redirect('tasks')
+            return redirect('projects')
         return render(request, self.template_name, context={'form': form})
