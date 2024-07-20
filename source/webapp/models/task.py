@@ -10,6 +10,7 @@ class Task(models.Model):
     type = models.ManyToManyField('webapp.Type', related_name='type_tasks', verbose_name="Тип")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
+    project = models.ForeignKey('webapp.Project', related_name='tasks', on_delete=models.CASCADE, verbose_name="Проект")
 
     def __str__(self):
         return f"{self.summary} ({self.status.name})"
