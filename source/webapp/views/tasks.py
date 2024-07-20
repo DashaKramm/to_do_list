@@ -9,7 +9,7 @@ from webapp.models import Task
 
 # Create your views here.
 class TaskListView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'tasks/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -18,7 +18,7 @@ class TaskListView(TemplateView):
 
 
 class CreateTaskView(TemplateView):
-    template_name = "create_task.html"
+    template_name = "tasks/create_task.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -34,7 +34,7 @@ class CreateTaskView(TemplateView):
 
 
 class DeleteTaskView(TemplateView):
-    template_name = "delete_task.html"
+    template_name = "tasks/delete_task.html"
 
     def dispatch(self, request, *args, **kwargs):
         self.task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
@@ -51,7 +51,7 @@ class DeleteTaskView(TemplateView):
 
 
 class TaskDetailView(TemplateView):
-    template_name = "detailed_task_view.html"
+    template_name = "tasks/detailed_task_view.html"
 
     def get_context_data(self, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
@@ -61,7 +61,7 @@ class TaskDetailView(TemplateView):
 
 
 class UpdateTaskView(TemplateView):
-    template_name = "update_task.html"
+    template_name = "tasks/update_task.html"
 
     def dispatch(self, request, *args, **kwargs):
         self.task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
@@ -81,7 +81,7 @@ class UpdateTaskView(TemplateView):
 
 
 class TasksListDeleteView(TemplateView):
-    template_name = 'tasks_list.html'
+    template_name = 'tasks/tasks_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()

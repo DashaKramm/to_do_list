@@ -25,10 +25,3 @@ class TaskForm(forms.ModelForm):
         if description and len(description) < 15:
             raise ValidationError('Полное описание должно содержать не менее 15 символов')
         return description
-
-
-class TaskDeleteForm(forms.Form):
-    tasks = forms.ModelMultipleChoiceField(
-        queryset=Task.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-    )
