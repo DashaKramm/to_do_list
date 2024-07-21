@@ -21,6 +21,7 @@
                                 <p class="card-text text-warning-emphasis"><span
                                         class="text-body-secondary">Дата окончания: </span>{{ project.end_date }}</p>
                             {% endif %}
+                            <a href="{{ project.get_absolute_url }}" class="card-link text-info">Детальный просмотр</a>
                         </div>
                     </div>
                 </div>

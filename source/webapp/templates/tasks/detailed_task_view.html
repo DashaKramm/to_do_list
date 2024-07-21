@@ -4,9 +4,6 @@
 {% endblock %}
 {% block links %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'create_task' %}">Создание задачи</a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url 'delete_task' task.pk %}">Удалить задачу</a>
     </li>
     <li class="nav-item">

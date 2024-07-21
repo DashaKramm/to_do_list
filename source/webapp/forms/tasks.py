@@ -8,7 +8,7 @@ from webapp.models import Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ['summary', 'description', 'status', 'type']
         widgets = {
             'description': widgets.Textarea(attrs={"cols": 24, "rows": 5}),
             'type': widgets.CheckboxSelectMultiple(),

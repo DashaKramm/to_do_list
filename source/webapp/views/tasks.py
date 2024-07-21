@@ -1,13 +1,25 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 from webapp.forms import TaskForm, TaskDeleteForm
-from webapp.models import Task
+from webapp.models import Task, Project
 
 
 # Create your views here.
+class CreateTaskView(CreateView):
+    template_name = "tasks/create_task.html"
+    form_class = TaskForm
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        form.save_m2m()
+        return redirect(project.get_absolute_url())
+
 
 class DeleteTaskView(TemplateView):
     template_name = "tasks/delete_task.html"

@@ -1,9 +1,10 @@
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from webapp.forms import SearchForm
-from webapp.models import Project
+from webapp.forms.projects import ProjectForm
+from webapp.models import Project, Task
 
 
 # Create your views here.
@@ -46,4 +47,14 @@ class ProjectListView(ListView):
 
 class CreateProjectView(CreateView):
     template_name = "projects/create_project.html"
+    form_class = ProjectForm
 
+
+class ProjectDetailView(DetailView):
+    template_name = "projects/detailed_project_view.html"
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = Task.objects.filter(project=self.object).order_by('-id')
+        return context
