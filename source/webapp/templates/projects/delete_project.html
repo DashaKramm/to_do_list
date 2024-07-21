@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Delete project</title>
+{% endblock %}
+{% block links %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'tasks_list' %}">Список задач</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <h2>Delete Project</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Вы действительно хотите удалить проект<br>"{{ project.name }}"?</p>
+        <div class="d-flex justify-content-start">
+            <input type="submit" value="Да" class="btn btn-danger rounded-0 me-2">
+            <a href="{% url "projects" %}" class="btn btn-primary rounded-0">Нет</a>
+        </div>
+    </form>
+{% endblock %}

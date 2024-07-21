@@ -1,6 +1,7 @@
 from django.db.models import Q
+from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.forms import SearchForm
 from webapp.forms.projects import ProjectForm
@@ -12,7 +13,7 @@ class ProjectListView(ListView):
     template_name = 'projects/index.html'
     model = Project
     context_object_name = 'projects'
-    ordering = ['-end_date', '-start_date']
+    ordering = ['end_date', 'start_date']
     paginate_by = 5
 
     def dispatch(self, request, *args, **kwargs):
@@ -58,3 +59,18 @@ class ProjectDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = Task.objects.filter(project=self.object).order_by('-id')
         return context
+
+
+class UpdateProjectView(UpdateView):
+    template_name = "projects/update_project.html"
+    form_class = ProjectForm
+    model = Project
+
+    def get_success_url(self):
+        return reverse("detailed_project_view", kwargs={"pk": self.object.pk})
+
+
+class DeleteProjectView(DeleteView):
+    template_name = "projects/delete_project.html"
+    model = Project
+    success_url = reverse_lazy("projects")
