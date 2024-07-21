@@ -14,7 +14,7 @@
         <p>Вы действительно хотите удалить задачу<br>"{{ task.summary }}"?</p>
         <div class="d-flex justify-content-start">
             <input type="submit" value="Да" class="btn btn-danger rounded-0 me-2">
-            <a href="{% url "projects" %}" class="btn btn-primary rounded-0">Нет</a>
+            <a href="{{ task.project.get_absolute_url }}" class="btn btn-primary rounded-0">Нет</a>
         </div>
     </form>
 {% endblock %}
