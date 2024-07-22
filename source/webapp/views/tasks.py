@@ -25,6 +25,12 @@ class DeleteTaskView(DeleteView):
     template_name = "tasks/delete_task.html"
     model = Task
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_deleted = True
+        self.object.save()
+        return redirect(self.get_success_url())
+
     def get_success_url(self):
         return reverse_lazy("detailed_project_view", kwargs={"pk": self.object.project.pk})
 
@@ -33,10 +39,9 @@ class TaskDetailView(DetailView):
     template_name = "tasks/detailed_task_view.html"
     model = Task
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['task'] = self.object
-        return context
+    def get_object(self, queryset=None):
+        task = get_object_or_404(Task, pk=self.kwargs.get('pk'), is_deleted=False)
+        return task
 
 
 class UpdateTaskView(UpdateView):
