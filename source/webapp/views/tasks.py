@@ -32,7 +32,7 @@ class DeleteTaskView(LoginRequiredMixin, DeleteView):
         return redirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse_lazy("detailed_project_view", kwargs={"pk": self.object.project.pk})
+        return reverse_lazy("webapp:detailed_project_view", kwargs={"pk": self.object.project.pk})
 
 
 class TaskDetailView(DetailView):
@@ -50,7 +50,7 @@ class UpdateTaskView(LoginRequiredMixin, UpdateView):
     model = Task
 
     def get_success_url(self):
-        return reverse("detailed_project_view", kwargs={"pk": self.object.project.pk})
+        return reverse("webapp:detailed_project_view", kwargs={"pk": self.object.project.pk})
 
 
 class TasksListDeleteView(LoginRequiredMixin, TemplateView):
@@ -67,5 +67,5 @@ class TasksListDeleteView(LoginRequiredMixin, TemplateView):
         if form.is_valid():
             delete_tasks = form.cleaned_data['tasks']
             delete_tasks.delete()
-            return redirect('projects')
+            return redirect('webapp:projects')
         return render(request, self.template_name, context={'form': form})

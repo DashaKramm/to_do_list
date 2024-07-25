@@ -125,8 +125,8 @@ USE_TZ = True
 
 LOGIN_URL = 'accounts:login'
 
-LOGIN_REDIRECT_URL = 'projects'
-LOGOUT_REDIRECT_URL = 'projects'
+LOGIN_REDIRECT_URL = 'webapp:projects'
+LOGOUT_REDIRECT_URL = 'webapp:projects'
 
 
 # Static files (CSS, JavaScript, Images)
