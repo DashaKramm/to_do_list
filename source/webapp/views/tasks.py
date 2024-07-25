@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
@@ -7,7 +8,7 @@ from webapp.models import Task, Project
 
 
 # Create your views here.
-class CreateTaskView(CreateView):
+class CreateTaskView(LoginRequiredMixin, CreateView):
     template_name = "tasks/create_task.html"
     form_class = TaskForm
 
@@ -20,7 +21,7 @@ class CreateTaskView(CreateView):
         return redirect(project.get_absolute_url())
 
 
-class DeleteTaskView(DeleteView):
+class DeleteTaskView(LoginRequiredMixin, DeleteView):
     template_name = "tasks/delete_task.html"
     model = Task
 
@@ -43,7 +44,7 @@ class TaskDetailView(DetailView):
         return task
 
 
-class UpdateTaskView(UpdateView):
+class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = "tasks/update_task.html"
     form_class = TaskForm
     model = Task
@@ -52,7 +53,7 @@ class UpdateTaskView(UpdateView):
         return reverse("detailed_project_view", kwargs={"pk": self.object.project.pk})
 
 
-class TasksListDeleteView(TemplateView):
+class TasksListDeleteView(LoginRequiredMixin, TemplateView):
     template_name = 'tasks/tasks_list.html'
 
     def get_context_data(self, **kwargs):

@@ -8,12 +8,14 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        next_path = request.POST.get('next', 'projects')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('projects')
+            return redirect(next_path)
         else:
             context['has_error'] = True
+    context["next_param"] = request.GET.get('next')
     return render(request, 'login.html', context=context)
 
 
