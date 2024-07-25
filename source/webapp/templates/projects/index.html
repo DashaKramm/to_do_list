@@ -25,14 +25,16 @@
                                 <a href="{{ project.get_absolute_url }}" class="card-link text-info">Детальный
                                     просмотр</a>
                             </div>
-                            <div>
-                                <a href="{% url 'update_project' project.pk %}" class="card-link text-warning">Редактировать
-                                    проект</a>
-                            </div>
-                            <div>
-                                <a href="{% url 'delete_project' project.pk %}" class="card-link text-danger">Удалить
-                                    проект</a>
-                            </div>
+                            {% if request.user.is_authenticated %}
+                                <div>
+                                    <a href="{% url 'update_project' project.pk %}" class="card-link text-warning">Редактировать
+                                        проект</a>
+                                </div>
+                                <div>
+                                    <a href="{% url 'delete_project' project.pk %}" class="card-link text-danger">Удалить
+                                        проект</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
