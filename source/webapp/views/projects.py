@@ -57,8 +57,9 @@ class CreateProjectView(PermissionRequiredMixin, CreateView):
     permission_required = "webapp.add_project"
 
     def form_valid(self, form):
+        response = super().form_valid(form)
         self.object.users.add(self.request.user)
-        return super().form_valid(form)
+        return response
 
 
 class ProjectDetailView(DetailView):
