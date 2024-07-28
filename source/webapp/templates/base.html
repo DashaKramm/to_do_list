@@ -24,11 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% block links %}
-                    {% if request.user.is_authenticated %}
+                    {% if perms.webapp.add_project %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'webapp:create_project' %}">Создание
                                 проекта</a>
                         </li>
+                    {% endif %}
+                    {% if perms.webapp.delete_task %}
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'webapp:tasks_list' %}">Список
                                 задач</a>

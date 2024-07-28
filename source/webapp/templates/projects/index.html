@@ -25,13 +25,17 @@
                                 <a href="{{ project.get_absolute_url }}" class="card-link text-info">Детальный
                                     просмотр</a>
                             </div>
-                            {% if request.user.is_authenticated %}
+                            {% if perms.webapp.change_project and project.is_user %}
                                 <div>
-                                    <a href="{% url 'webapp:update_project' project.pk %}" class="card-link text-warning">Редактировать
+                                    <a href="{% url 'webapp:update_project' project.pk %}"
+                                       class="card-link text-warning">Редактировать
                                         проект</a>
                                 </div>
+                            {% endif %}
+                            {% if perms.webapp.delete_project and project.is_user %}
                                 <div>
-                                    <a href="{% url 'webapp:delete_project' project.pk %}" class="card-link text-danger">Удалить
+                                    <a href="{% url 'webapp:delete_project' project.pk %}"
+                                       class="card-link text-danger">Удалить
                                         проект</a>
                                 </div>
                             {% endif %}
