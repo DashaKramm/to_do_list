@@ -4,7 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from webapp.forms import SearchForm
+from webapp.forms import SearchForm, ProjectUserForm
 from webapp.forms.projects import ProjectForm
 from webapp.models import Project, Task
 
@@ -75,3 +75,18 @@ class DeleteProjectView(LoginRequiredMixin, DeleteView):
     template_name = "projects/delete_project.html"
     model = Project
     success_url = reverse_lazy("webapp:projects")
+
+
+class ManageProjectUsersView(LoginRequiredMixin, UpdateView):
+    model = Project
+    form_class = ProjectUserForm
+    template_name = "projects/manage_project_users.html"
+    context_object_name = 'project'
+
+    def get_success_url(self):
+        return reverse_lazy('webapp:detailed_project_view', kwargs={'pk': self.object.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['project'] = self.object
+        return context

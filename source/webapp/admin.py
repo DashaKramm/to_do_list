@@ -41,7 +41,7 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'name']
     list_filter = ['start_date', 'end_date']
     search_fields = ['name', 'description']
-    fields = ['start_date', 'end_date', 'name', 'description']
+    fields = ['start_date', 'end_date', 'name', 'description', 'users']
 
 
 admin.site.register(Project, ProjectAdmin)

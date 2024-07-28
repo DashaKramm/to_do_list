@@ -8,7 +8,7 @@ from webapp.models import Project
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ['start_date', 'end_date', 'name', 'description']
         widgets = {
             'description': widgets.Textarea(attrs={"cols": 24, "rows": 5}),
             'start_date': widgets.DateInput(attrs={"type": "date"}),
